@@ -465,7 +465,7 @@ export const AiChatPage: React.FC = () => {
           {isTyping && (
             <div className="flex items-center gap-3 text-[#687380] text-small italic font-mono">
               <Bot className="w-4 h-4 text-[#3B82F6] animate-spin" />
-              Official Claude & Gemini API is processing your answer...
+              Google Gemini is processing your answer...
             </div>
           )}
         </div>

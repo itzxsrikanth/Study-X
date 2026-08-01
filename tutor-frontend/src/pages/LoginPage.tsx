@@ -7,6 +7,7 @@ import { Hexagon, Mail, Lock, User, Lightbulb, Brain, BookOpen, GraduationCap, P
 import { Input } from '../components/Input';
 import { Button } from '../components/Button';
 import { Badge } from '../components/Badge';
+import { Logo } from '../components/Logo';
 import Matter from 'matter-js';
 
 export const LoginPage: React.FC = () => {
@@ -242,15 +243,16 @@ export const LoginPage: React.FC = () => {
       >
         <div className="text-center space-y-3 mb-8">
           <div 
-            className="inline-flex rounded-2xl shadow-glow-primary mb-2 physics-element cursor-pointer overflow-hidden border border-white/10"
+            className="flex flex-col items-center justify-center space-y-4 cursor-pointer physics-element"
             onClick={() => setGravityEnabled(true)}
             title="Click me for Antigravity!"
           >
-            <img src="/studyx-logo.png" alt="StudyX Logo" className="w-14 h-14 object-cover" />
+            <Logo className="w-16 h-16 shadow-glow-primary" />
+            
+            <h1 className="text-h1 font-bold text-[#FFFEFF] flex items-center">
+              Study<span className="text-gradient-studyx-primary">X</span>
+            </h1>
           </div>
-          <h1 className="text-h2 font-bold text-[#FFFEFF] tracking-tight physics-element">
-            Study<span className="text-gradient-studyx-primary">X</span>
-          </h1>
           <p className="text-small text-[#9CA3AF] physics-element">Welcome back! Please sign in to your account.</p>
         </div>
 

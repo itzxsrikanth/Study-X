@@ -13,6 +13,7 @@ import {
 } from 'lucide-react';
 import { useUserStore } from '../store/userStore';
 import { Badge } from './Badge';
+import { Logo } from './Logo';
 
 export const Sidebar: React.FC = () => {
   const location = useLocation();
@@ -33,9 +34,9 @@ export const Sidebar: React.FC = () => {
     <aside className="hidden xl:flex flex-col w-72 h-[calc(100vh-6.5rem)] sticky top-24 glass-card-studyx p-5 justify-between border-white/10 shadow-studyx-glass">
       {/* Top Logo & Workspace Links */}
       <div className="space-y-6">
-        <div className="flex items-center gap-3 px-2">
+        <div className="flex items-center gap-3 px-6 pt-8 pb-4">
           <div className="rounded-xl overflow-hidden shadow-glow-primary border border-white/10">
-            <img src="/studyx-logo.png" alt="StudyX Logo" className="w-9 h-9 object-cover" />
+            <Logo className="w-9 h-9 shadow-glow-primary" />
           </div>
           <div>
             <span className="font-bold text-[#FFFEFF] text-h4 tracking-tight block">

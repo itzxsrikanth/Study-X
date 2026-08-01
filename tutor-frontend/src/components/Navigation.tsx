@@ -16,6 +16,7 @@ import {
   Menu, 
   X
 } from 'lucide-react';
+import { Logo } from './Logo';
 
 export const Navigation: React.FC = () => {
   const location = useLocation();
@@ -40,8 +41,8 @@ export const Navigation: React.FC = () => {
         to={token ? '/dashboard' : '/welcome'} 
         className="pointer-events-auto flex items-center gap-3 group glass-card-studyx px-4 py-2 border-white/10 hover:border-[#3B82F6]/40 transition-all"
       >
-        <div className="rounded-xl overflow-hidden shadow-glow-primary group-hover:scale-105 transition-transform border border-white/10">
-          <img src="/studyx-logo.png" alt="StudyX Logo" className="w-9 h-9 object-cover" />
+        <div className="rounded-xl shadow-glow-primary group-hover:scale-105 transition-transform border border-white/10">
+          <Logo className="w-9 h-9 shadow-glow-primary" />
         </div>
         <div className="hidden sm:block">
           <span className="font-bold text-[#FFFEFF] text-h4 tracking-tight block">

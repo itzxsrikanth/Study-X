@@ -1,6 +1,7 @@
 import React from 'react';
 import { Hexagon, Heart, ShieldCheck, Github, Twitter, Linkedin } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { Logo } from './Logo';
 
 export const Footer: React.FC = () => {
   return (
@@ -9,7 +10,7 @@ export const Footer: React.FC = () => {
         <div className="space-y-3">
           <div className="flex items-center gap-2.5">
             <div className="rounded-xl overflow-hidden shadow-glow-primary border border-white/10">
-              <img src="/studyx-logo.png" alt="StudyX Logo" className="w-9 h-9 object-cover" />
+              <Logo className="w-9 h-9 shadow-glow-primary" />
             </div>
             <span className="font-bold text-[#FFFEFF] text-h4 tracking-tight">
               Study<span className="text-gradient-studyx-primary">X</span>
