@@ -62,11 +62,23 @@ export const LandingPage: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-studyxVoid text-studyxN0 flex flex-col justify-between pt-24 overflow-x-hidden">
-      {/* Floating Orbs Background */}
-      <div className="floating-orbs-container !fixed pointer-events-none">
-        <div className="orb orb-1"></div>
-        <div className="orb orb-2"></div>
-        <div className="orb orb-3"></div>
+      {/* Aurora Gradient Background */}
+      <div className="fixed inset-0 overflow-hidden pointer-events-none z-0">
+        <motion.div 
+          className="absolute top-[-20%] left-[-10%] w-[60vw] h-[60vw] rounded-full mix-blend-screen filter blur-[120px] opacity-[0.15] bg-[#3B82F6]"
+          animate={{ x: [0, 100, 0], y: [0, 50, 0], scale: [1, 1.2, 1] }}
+          transition={{ duration: 20, repeat: Infinity, ease: 'easeInOut' }}
+        />
+        <motion.div 
+          className="absolute top-[20%] right-[-10%] w-[50vw] h-[50vw] rounded-full mix-blend-screen filter blur-[140px] opacity-[0.12] bg-[#C6FF00]"
+          animate={{ x: [0, -80, 0], y: [0, -60, 0], scale: [1, 1.5, 1] }}
+          transition={{ duration: 25, repeat: Infinity, ease: 'easeInOut', delay: 2 }}
+        />
+        <motion.div 
+          className="absolute bottom-[-10%] left-[20%] w-[70vw] h-[70vw] rounded-full mix-blend-screen filter blur-[150px] opacity-[0.12] bg-[#0EA5E9]"
+          animate={{ x: [0, 50, 0], y: [0, -100, 0], scale: [1, 1.3, 1] }}
+          transition={{ duration: 22, repeat: Infinity, ease: 'easeInOut', delay: 1 }}
+        />
       </div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 space-y-20">
@@ -123,6 +135,28 @@ export const LandingPage: React.FC = () => {
               Open AI Tutor Chat
             </Button>
           </motion.div>
+        </div>
+
+        {/* Animated Layered Waves */}
+        <div className="relative w-full h-[120px] md:h-[180px] overflow-hidden -mt-4 mb-16 z-0 pointer-events-none">
+          <motion.svg 
+            className="absolute bottom-0 w-[200%] h-full text-[#3B82F6] opacity-10"
+            viewBox="0 0 2400 120" 
+            preserveAspectRatio="none"
+            animate={{ x: ["0%", "-50%"] }}
+            transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+          >
+            <path d="M0,95.8C59.71,118,137.9,122.25,200.77,105.74,242.41,94.75,282.51,76.6,321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V120H0V95.8Z M1200,95.8C1259.71,118,1337.9,122.25,1400.77,105.74,1442.41,94.75,1482.51,76.6,1521.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C2023.78,31,2106.67,72,2185.66,92.83c70.05,18.48,146.53,26.09,214.34,3V120H1200V95.8Z" fill="currentColor"></path>
+          </motion.svg>
+          <motion.svg 
+            className="absolute bottom-0 w-[200%] h-[80%] text-[#0EA5E9] opacity-20"
+            viewBox="0 0 2400 120" 
+            preserveAspectRatio="none"
+            animate={{ x: ["-50%", "0%"] }}
+            transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
+          >
+            <path d="M0,95.8C59.71,118,137.9,122.25,200.77,105.74,242.41,94.75,282.51,76.6,321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V120H0V95.8Z M1200,95.8C1259.71,118,1337.9,122.25,1400.77,105.74,1442.41,94.75,1482.51,76.6,1521.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C2023.78,31,2106.67,72,2185.66,92.83c70.05,18.48,146.53,26.09,214.34,3V120H1200V95.8Z" fill="currentColor"></path>
+          </motion.svg>
         </div>
 
         {/* STATS SECTION */}

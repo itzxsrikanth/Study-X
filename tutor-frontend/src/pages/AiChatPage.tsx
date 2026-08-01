@@ -477,14 +477,25 @@ export const AiChatPage: React.FC = () => {
               e.preventDefault();
               handleSend();
             }}
-            className="flex items-center gap-3 bg-[#0B0B10] border border-white/10 rounded-full p-2 pl-5 focus-within:ring-2 focus-within:ring-[#3B82F6]"
+            className="flex items-end gap-3 bg-[#0B0B10] border border-white/10 rounded-3xl p-2 pl-5 focus-within:ring-2 focus-within:ring-[#3B82F6]"
           >
-            <input
-              type="text"
+            <textarea
               value={input}
               onChange={(e) => setInput(e.target.value)}
-              placeholder={isListening ? `Listening in ${currentLangObj.name}...` : `Ask any question or tap mic...`}
-              className="w-full bg-transparent text-small text-white placeholder-[#687380] focus:outline-none"
+              onKeyDown={(e) => {
+                if (e.key === 'Enter' && !e.shiftKey) {
+                  e.preventDefault();
+                  handleSend();
+                }
+              }}
+              placeholder={isListening ? `Listening in ${currentLangObj.name}...` : `Ask any question... (Shift+Enter for newline)`}
+              className="w-full bg-transparent text-small text-white placeholder-[#687380] focus:outline-none resize-none py-2 max-h-40"
+              rows={1}
+              onInput={(e) => {
+                const target = e.target as HTMLTextAreaElement;
+                target.style.height = 'auto';
+                target.style.height = Math.min(target.scrollHeight, 160) + 'px';
+              }}
             />
 
             {/* Mic Button */}
