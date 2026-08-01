@@ -1,0 +1,17 @@
+# Node & Frontend Build
+node_modules/
+dist/
+.vite/
+*.log
+
+# Java & Maven Build
+target/
+*.class
+*.jar
+*.war
+
+# IDE & System
+.idea/
+.vscode/
+.DS_Store
+*.tmp

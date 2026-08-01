@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>StudyX / SteadyX - Full-Stack Codebase & Architecture Guide (Editable Document)</title>
+  <style>
+    body { font-family: 'Segoe UI', Arial, sans-serif; line-height: 1.6; color: #1f2937; margin: 0; padding: 40px; background-color: #f9fafb; }
+    .container { max-width: 900px; margin: 0 auto; background: #ffffff; padding: 50px; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); border: 1px solid #e5e7eb; }
+    h1 { color: #4f46e5; border-bottom: 3px solid #4f46e5; padding-bottom: 12px; font-size: 28px; }
+    h2 { color: #1e1b4b; border-bottom: 1px solid #e5e7eb; padding-bottom: 8px; margin-top: 35px; font-size: 22px; }
+    h3 { color: #4338ca; margin-top: 25px; font-size: 18px; }
+    p, li { font-size: 15px; color: #374151; }
+    .badge { display: inline-block; background-color: #e0e7ff; color: #3730a3; padding: 4px 12px; border-radius: 20px; font-size: 13px; font-weight: bold; margin-right: 8px; }
+    table { width: 100%; border-collapse: collapse; margin-top: 15px; margin-bottom: 25px; }
+    th, td { border: 1px solid #d1d5db; padding: 10px 14px; text-align: left; font-size: 14px; }
+    th { background-color: #f3f4f6; color: #111827; font-weight: bold; }
+    pre { background: #1e293b; color: #f8fafc; padding: 18px; border-radius: 8px; overflow-x: auto; font-family: 'Consolas', 'Courier New', monospace; font-size: 13px; line-height: 1.5; }
+    .editable-note { background: #fef3c7; border-left: 4px solid #f59e0b; padding: 12px 16px; border-radius: 4px; margin-bottom: 25px; font-size: 14px; color: #92400e; }
+  </style>
+</head>
+<body contenteditable="true">
+  <div class="container">
+    <div class="editable-note">
+      <strong>✏️ Editable Document Mode Active:</strong> You can click anywhere in this document to edit text, modify code snippets, or customize content before saving or exporting to PDF.
+    </div>
+
+    <h1>🚀 StudyX / SteadyX - Full-Stack Application Complete Codebase</h1>
+    <p><strong>Generated Date:</strong> July 31, 2026 | <strong>Architecture:</strong> React 18 (Frontend) + Java Spring Boot 3.2 (Backend)</p>
+
+    <div style="margin-top: 20px;">
+      <span class="badge">React 18</span>
+      <span class="badge">TypeScript</span>
+      <span class="badge">Java 17</span>
+      <span class="badge">Spring Boot 3.2</span>
+      <span class="badge">Tailwind CSS</span>
+      <span class="badge">JWT Security</span>
+    </div>
+
+    <h2>1. Executive Summary & Architecture Overview</h2>
+    <p>StudyX (SteadyX) is an advanced AI-powered learning OS designed for personalized learning path generation, multi-mode AI tutoring, dynamic adaptive quiz evaluations, 8-platform course hub exploration, and verified QR certificate generation.</p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Component</th>
+          <th>Technology</th>
+          <th>Port / Endpoint</th>
+          <th>Key Purpose</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Frontend Web App</strong></td>
+          <td>React 18 + TypeScript + Vite + Tailwind CSS</td>
+          <td><code>http://localhost:3017</code></td>
+          <td>User interface, dashboard, voice assistant, chat, quizzes, profile certificates</td>
+        </tr>
+        <tr>
+          <td><strong>Backend Server</strong></td>
+          <td>Java 17 + Spring Boot 3.2 + Spring Data JPA</td>
+          <td><code>http://localhost:8080/api/v1</code></td>
+          <td>REST APIs, authentication, roadmap generation engine, database entity persistence</td>
+        </tr>
+        <tr>
+          <td><strong>AI Model Gateway</strong></td>
+          <td>Anthropic Claude REST API + OpenAI Fallback</td>
+          <td><code>https://api.anthropic.com</code></td>
+          <td>Intent parsing, custom course roadmaps, multi-mode tutoring responses</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2>2. Complete Backend REST API Reference (Java Spring Boot)</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Module</th>
+          <th>HTTP Method</th>
+          <th>Endpoint Path</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Authentication</td>
+          <td>POST</td>
+          <td>/api/v1/auth/register</td>
+          <td>User registration & BCrypt password hashing</td>
+        </tr>
+        <tr>
+          <td>Authentication</td>
+          <td>POST</td>
+          <td>/api/v1/auth/login</td>
+          <td>User authentication & JWT Bearer token generation</td>
+        </tr>
+        <tr>
+          <td>Phase 1: Goal Intake</td>
+          <td>POST</td>
+          <td>/api/v1/goals/intake</td>
+          <td>Submits career goal, skill level, and weekly commitment</td>
+        </tr>
+        <tr>
+          <td>Phase 2: Plan Generation</td>
+          <td>POST</td>
+          <td>/api/v1/plans/generate/{goalId}</td>
+          <td>Generates personalized multi-milestone adaptive roadmap</td>
+        </tr>
+        <tr>
+          <td>Phase 3: Progress Tracking</td>
+          <td>PATCH</td>
+          <td>/api/v1/plans/tasks/{taskId}/status</td>
+          <td>Toggles task completion status and recalculates XP</td>
+        </tr>
+        <tr>
+          <td>Phase 4: Smart Nudges</td>
+          <td>GET</td>
+          <td>/api/v1/nudges/user/{userId}</td>
+          <td>Retrieves active streak and inertia intervention nudges</td>
+        </tr>
+        <tr>
+          <td>Phase 5: Feedback Loop</td>
+          <td>POST</td>
+          <td>/api/v1/quizzes/submit</td>
+          <td>Submits evaluation answers and triggers remediation milestone</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2>3. Frontend API Layer Implementation</h2>
+    <h3><code>axiosInstance.ts</code></h3>
+    <pre><code>import axios from 'axios';
+
+export const axiosInstance = axios.create({
+  baseURL: 'http://localhost:8080/api/v1',
+  headers: { 'Content-Type': 'application/json' },
+  timeout: 10000,
+});
+
+axiosInstance.interceptors.request.use((config) => {
+  const token = localStorage.getItem('studyx_token');
+  if (token && config.headers) {
+    config.headers.Authorization = `Bearer ${token}`;
+  }
+  return config;
+});</code></pre>
+
+    <h2>4. Multilingual Voice Assistant Engine</h2>
+    <h3><code>useVoiceAssistant.ts</code></h3>
+    <pre><code>import { useState, useEffect, useRef, useCallback } from 'react';
+
+export const useVoiceAssistant = (onTranscriptComplete?: (text: string) => void, initialLang: string = 'en-US') => {
+  const [isListening, setIsListening] = useState(false);
+  const [isSpeaking, setIsSpeaking] = useState(false);
+  const [transcript, setTranscript] = useState('');
+  const [selectedLang, setSelectedLang] = useState(initialLang);
+  const recognitionRef = useRef&lt;any&gt;(null);
+
+  useEffect(() => {
+    const SpeechRecognition = (window as any).SpeechRecognition || (window as any).webkitSpeechRecognition;
+    if (!SpeechRecognition) return;
+
+    const recognition = new SpeechRecognition();
+    recognition.continuous = false;
+    recognition.interimResults = true;
+    recognition.lang = selectedLang;
+
+    recognition.onresult = (event: any) => {
+      let current = '';
+      for (let i = event.resultIndex; i < event.results.length; i++) {
+        current += event.results[i][0].transcript;
+      }
+      setTranscript(current);
+      if (event.results[0].isFinal) {
+        setIsListening(false);
+        if (onTranscriptComplete && current.trim()) onTranscriptComplete(current.trim());
+      }
+    };
+    recognitionRef.current = recognition;
+  }, [onTranscriptComplete, selectedLang]);
+
+  const speakText = useCallback((text: string) => {
+    if (!('speechSynthesis' in window)) return;
+    window.speechSynthesis.cancel();
+    const utterance = new SpeechSynthesisUtterance(text);
+    utterance.lang = selectedLang;
+    window.speechSynthesis.speak(utterance);
+  }, [selectedLang]);
+
+  return { isListening, isSpeaking, transcript, startListening: () => recognitionRef.current?.start(), stopListening: () => recognitionRef.current?.stop(), speakText };
+};</code></pre>
+
+    <h2>5. File Exporters Utility (PDF / DOCX / PPTX / XLSX / ZIP)</h2>
+    <h3><code>fileExporter.ts</code></h3>
+    <pre><code>export const downloadFile = (blob: Blob, filename: string) => {
+  const url = URL.createObjectURL(blob);
+  const link = document.createElement('a');
+  link.href = url;
+  link.download = filename;
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+  URL.revokeObjectURL(url);
+};
+
+export const exportAsPDF = (title: string, textContent: string) => {
+  const htmlContent = `&lt;html&gt;&lt;body&gt;&lt;h1&gt;${title}&lt;/h1&gt;&lt;p&gt;${textContent.replace(/\n/g, '&lt;br/&gt;')}&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;`;
+  const blob = new Blob([htmlContent], { type: 'application/pdf' });
+  downloadFile(blob, `${title}.pdf`);
+};
+
+export const exportAsDOCX = (title: string, textContent: string) => {
+  const blob = new Blob([`Title: ${title}\n\n${textContent}`], { type: 'application/msword' });
+  downloadFile(blob, `${title}.docx`);
+};</code></pre>
+
+    <h2>6. Backend Security & Controller Implementation (Java)</h2>
+    <h3><code>SecurityConfig.java</code></h3>
+    <pre><code>package com.tutor.common.config;
+
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+
+@Configuration
+public class SecurityConfig {
+
+    @Bean
+    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+        http.csrf(csrf -> csrf.disable())
+            .cors(cors -> cors.configure(http))
+            .authorizeHttpRequests(auth -> auth.anyRequest().permitAll());
+        return http.build();
+    }
+}</code></pre>
+
+    <div style="margin-top: 40px; border-top: 1px solid #e5e7eb; padding-top: 20px; font-size: 13px; color: #6b7280; text-align: center;">
+      StudyX / SteadyX Architecture & Source Code Document • Editable HTML & Word Compatible Format
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,9 @@
+CREATE TABLE nudges (
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    user_id BIGINT NOT NULL,
+    trigger_reason VARCHAR(100),
+    message VARCHAR(1000) NOT NULL,
+    is_read BOOLEAN DEFAULT FALSE,
+    is_dismissed BOOLEAN DEFAULT FALSE,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);

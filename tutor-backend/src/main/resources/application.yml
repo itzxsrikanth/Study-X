@@ -1,0 +1,26 @@
+spring:
+  profiles:
+    active: dev
+  application:
+    name: tutor-backend
+
+server:
+  port: 8080
+
+jwt:
+  secret: defaultSecretKeyForDevelopmentTesting32BytesMinLength!
+  expiration-ms: 86400000
+
+anthropic:
+  api:
+    key: ${ANTHROPIC_API_KEY:mock-key}
+
+google:
+  gemini:
+    api:
+      key: ${GEMINI_API_KEY:mock-key}
+
+ai:
+  api:
+    base-url: https://api.anthropic.com
+    key: ${ANTHROPIC_API_KEY:mock-key}
