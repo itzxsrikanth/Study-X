@@ -1,16 +1,20 @@
 import { create } from 'zustand';
+import { auth, isFirebaseConfigured } from '../config/firebase';
+import { onAuthStateChanged, signOut } from 'firebase/auth';
 
 interface UserState {
-  userId: number;
+  userId: number | string;
   email: string;
   fullName: string;
   token: string | null;
   activePlanId: number | null;
   streakCount: number;
-  setAuth: (userId: number, email: string, fullName: string, token: string, streakCount?: number) => void;
+  isInitialized: boolean;
+  setAuth: (userId: number | string, email: string, fullName: string, token: string, streakCount?: number) => void;
   setActivePlanId: (planId: number) => void;
   setStreakCount: (count: number) => void;
-  logout: () => void;
+  logout: () => Promise<void>;
+  initAuth: () => void;
 }
 
 export const useUserStore = create<UserState>((set) => ({
@@ -20,6 +24,7 @@ export const useUserStore = create<UserState>((set) => ({
   token: localStorage.getItem('jwt_token'),
   activePlanId: null,
   streakCount: 3,
+  isInitialized: false,
 
   setAuth: (userId, email, fullName, token, streakCount = 1) => {
     localStorage.setItem('jwt_token', token);
@@ -29,8 +34,36 @@ export const useUserStore = create<UserState>((set) => ({
   setActivePlanId: (activePlanId) => set({ activePlanId }),
   setStreakCount: (streakCount) => set({ streakCount }),
 
-  logout: () => {
+  logout: async () => {
+    if (isFirebaseConfigured && auth) {
+      await signOut(auth);
+    }
     localStorage.removeItem('jwt_token');
-    set({ userId: 1, token: null, activePlanId: null });
+    set({ userId: 1, email: 'learner@tutor.ai', fullName: 'Alex Learner', token: null, activePlanId: null });
   },
+
+  initAuth: () => {
+    if (!isFirebaseConfigured || !auth) {
+      // Mock mode
+      set({ isInitialized: true });
+      return;
+    }
+
+    onAuthStateChanged(auth, async (user) => {
+      if (user) {
+        const token = await user.getIdToken();
+        localStorage.setItem('jwt_token', token);
+        set({ 
+          userId: user.uid, 
+          email: user.email || '', 
+          fullName: user.displayName || 'Learner',
+          token,
+          isInitialized: true
+        });
+      } else {
+        localStorage.removeItem('jwt_token');
+        set({ token: null, isInitialized: true });
+      }
+    });
+  }
 }));

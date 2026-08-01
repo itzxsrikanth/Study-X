@@ -15,9 +15,22 @@ const queryClient = new QueryClient({
   },
 });
 
+import { useEffect } from 'react';
+import { useUserStore } from './store/userStore';
+
 const Layout: React.FC = () => {
   const location = useLocation();
   const isLandingOrLogin = location.pathname === '/welcome' || location.pathname === '/login';
+  const initAuth = useUserStore((state) => state.initAuth);
+  const isInitialized = useUserStore((state) => state.isInitialized);
+
+  useEffect(() => {
+    initAuth();
+  }, [initAuth]);
+
+  if (!isInitialized) {
+    return <div className="min-h-screen bg-[#0B0B10] flex items-center justify-center text-[#9CA3AF]">Initializing StudyX OS...</div>;
+  }
 
   return (
     <div className="min-h-screen bg-darkBg text-slate-100 flex flex-col font-sans">

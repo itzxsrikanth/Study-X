@@ -26,13 +26,46 @@ export const LoginPage: React.FC = () => {
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
+    
+    const { auth, isFirebaseConfigured } = await import('../config/firebase');
+    const { signInWithEmailAndPassword, createUserWithEmailAndPassword, updateProfile } = await import('firebase/auth');
+
+    if (isFirebaseConfigured && auth) {
+      try {
+        // Try to log in first
+        try {
+          const userCredential = await signInWithEmailAndPassword(auth, email, password);
+          setAuth(userCredential.user.uid, email, fullName, await userCredential.user.getIdToken(), 3);
+        } catch (err: any) {
+          // If user doesn't exist, try to sign them up
+          if (err.code === 'auth/user-not-found' || err.code === 'auth/invalid-credential') {
+            const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+            if (fullName) {
+              await updateProfile(userCredential.user, { displayName: fullName });
+            }
+            setAuth(userCredential.user.uid, email, fullName, await userCredential.user.getIdToken(), 3);
+          } else {
+            throw err;
+          }
+        }
+        navigate('/dashboard');
+      } catch (err: any) {
+        console.error("Firebase Auth Error:", err);
+        alert(err.message || "Failed to authenticate with Firebase.");
+      } finally {
+        setLoading(false);
+      }
+      return;
+    }
+
+    // Fallback to Mock Auth
     try {
       const response = await axiosInstance.post('/auth/login', { email, password, fullName });
       const data = response.data.data;
       setAuth(data.userId, data.email, data.fullName, data.token, data.streakCount);
       navigate('/dashboard');
     } catch (err) {
-      console.error(err);
+      console.warn('Backend Auth failed, falling back to local mock data');
       setAuth(1, email, fullName, 'mock-jwt-token', 3);
       navigate('/dashboard');
     } finally {
